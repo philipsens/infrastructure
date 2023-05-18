@@ -24,9 +24,9 @@ spec:
             hosts:
               - argocd.sergi.cool
             tls:
-            - secretname: argocd-ingress-tls
-              hosts:
-                - argocd.sergi.cool
+              - secretName: argocd-ingress-tls
+                hosts:
+                  - argocd.sergi.cool
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: argocd
