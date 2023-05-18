@@ -2,5 +2,5 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: git@github.com:philipsens/infrastructure.git
+    repoURL: https://github.com/philipsens/infrastructure
     targetRevision: HEAD
