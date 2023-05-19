@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plex
+  namespace: plex
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+spec:
+  ingressClassName: public
+  tls:
+    - secretName: plex-ingress-tls
+      hosts:
+        - plex.sergi.cool
+  rules:
+    - host: plex.sergi.cool
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: plex-lb-tcp
+                port:
+                  number: 80
