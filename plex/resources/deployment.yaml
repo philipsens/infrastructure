@@ -12,12 +12,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: plex-config
-#          env:
-#            - name: PLEX_CLAIM
-#              valueFrom:
-#                secretKeyRef:
-#                  name: plex
-#                  key: claim
+          env:
+            - name: PLEX_CLAIM
+              valueFrom:
+                secretKeyRef:
+                  name: plex
+                  key: claim
           ports:
             - containerPort: 1900
             - containerPort: 3005
