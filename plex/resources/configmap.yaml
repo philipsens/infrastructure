@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: plex-config
 data:
-  ADVERTISE_IP: 'https://plex.sergi.cool:32400'
+  ADVERTISE_IP: 'https://plex.sergi.cool'
   PLEX_GID: '1337'
