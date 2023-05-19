@@ -21,8 +21,8 @@ spec:
       targetPort: 32469
       name: dlna
     - protocol: TCP
-      port: 32400
-      targetPort: 80
+      port: 80
+      targetPort: 32400
       name: web
 ---
 apiVersion: v1
