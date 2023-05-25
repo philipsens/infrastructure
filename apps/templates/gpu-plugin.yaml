@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cluster-secrets
+  name: gpu-plugin
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    path: cluster-secrets
-    repoURL: {{ .Values.spec.source.repoURL }}
-    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: deployments/gpu_plugin
+    repoURL: https://github.com/intel/intel-device-plugins-for-kubernetes
+    targetRevision: v0.26.1
   destination:
-    namespace: cluster-secrets
+    namespace: gpu-plugin
     server: {{ .Values.spec.destination.server }}
   syncPolicy:
     automated:

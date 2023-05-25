@@ -6,6 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  project: default
   source:
     path: plex
     repoURL: {{ .Values.spec.source.repoURL }}
@@ -13,7 +14,6 @@ spec:
   destination:
     namespace: plex
     server: {{ .Values.spec.destination.server }}
-  project: default
   syncPolicy:
     automated:
       prune: true
