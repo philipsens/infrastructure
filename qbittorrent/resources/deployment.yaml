@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbittorrent
+spec:
+  template:
+    spec:
+      containers:
+        - name: qbittorrent
+          image: cr.hotio.dev/hotio/qbittorrent:4.5.2
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: qbittorrent-config
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /config
+              name: qbittorrent-config
+            - mountPath: /downloads
+              name: qbittorrent-downloads
+      volumes:
+        - name: qbittorrent-config
+          hostPath:
+            path: /opt/qbittorrent/config
+            type: Directory
+        - name: qbittorrent-downloads
+          hostPath:
+            path: /opt/media/downloads
+            type: Directory
