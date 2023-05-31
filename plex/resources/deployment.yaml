@@ -9,6 +9,9 @@ spec:
         - name: plex
           image: plexinc/pms-docker:latest
           imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              gpu.intel.com/i915: "1"
           envFrom:
             - configMapRef:
                 name: plex-config
