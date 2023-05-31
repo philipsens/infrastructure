@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: plex-lb-tcp
   annotations:
-    metallb.universe.tf/allow-shared-ip: plex
+    metallb.universe.tf/allow-shared-ip: phosphorous
 spec:
   type: LoadBalancer
   loadBalancerIP: 192.168.178.15
@@ -30,7 +30,7 @@ kind: Service
 metadata:
   name: plex-lb-udp
   annotations:
-    metallb.universe.tf/allow-shared-ip: plex
+    metallb.universe.tf/allow-shared-ip: phosphorous
 spec:
   type: LoadBalancer
   loadBalancerIP: 192.168.178.15
