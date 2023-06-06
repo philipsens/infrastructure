@@ -3,8 +3,6 @@
 #metadata:
 #  name: vaultwarden
 #  namespace: argocd
-#  finalizers:
-#    - resources-finalizer.vaultwarden.argoproj.io
 #spec:
 #  project: default
 #  source:
