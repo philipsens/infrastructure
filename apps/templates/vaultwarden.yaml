@@ -1,31 +1,33 @@
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: vaultwarden
-#  namespace: argocd
-#spec:
-#  project: default
-#  source:
-#    repoURL: 'https://github.com/guerzon/vaultwarden'
-#    targetRevision: v0.8.0
-#    path: .
-#    helm:
-#      values: |-
-#        domain: "https://vaultwarden.sergi.cool"
-#        signupsAllowed: false
-#        ingress:
-#          enabled: true
-#          additionalAnnotations:
-#            cert-manager.io/cluster-issuer: lets-encrypt
-#          hostname: vaultwarden.sergi.cool
-#          tls: true
-#          tlsSecret: vaultwarden-ingress-tls
-#  destination:
-#    server: {{ .Values.spec.destination.server }}
-#    namespace: vaultwarden
-#  syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
-#    syncOptions:
-#      - CreateNamespace=true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vaultwarden
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.vaultwarden.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/guerzon/vaultwarden'
+    targetRevision: b6c1647945c5536460e815898fdb231f84fe28bb
+    path: .
+    helm:
+      values: |-
+        domain: "https://vaultwarden.sergi.cool"
+        signupsAllowed: false
+        ingress:
+          enabled: true
+          additionalAnnotations:
+            cert-manager.io/cluster-issuer: lets-encrypt
+          hostname: vaultwarden.sergi.cool
+          tls: true
+          tlsSecret: vaultwarden-ingress-tls
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: vaultwarden
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
