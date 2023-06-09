@@ -1,0 +1,18 @@
+domain: "https://vaultwarden.sergi.cool"
+signupsAllowed: false
+ingress:
+  enabled: true
+  additionalAnnotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+  hostname: vaultwarden.sergi.cool
+  tls: true
+  tlsSecret: vaultwarden-ingress-tls
+smtp:
+  existingSecret: "vaultwarden"
+  host: "smtp-relay.sendinblue.com"
+  security: "starttls"
+  port: 587
+  username:
+    existingSecretKey: "username"
+  password:
+    existingSecretKey: "password"

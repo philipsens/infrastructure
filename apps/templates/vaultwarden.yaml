@@ -8,20 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/guerzon/vaultwarden'
-    targetRevision: b6c1647945c5536460e815898fdb231f84fe28bb
-    path: .
-    helm:
-      values: |-
-        domain: "https://vaultwarden.sergi.cool"
-        signupsAllowed: false
-        ingress:
-          enabled: true
-          additionalAnnotations:
-            cert-manager.io/cluster-issuer: lets-encrypt
-          hostname: vaultwarden.sergi.cool
-          tls: true
-          tlsSecret: vaultwarden-ingress-tls
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: vaultwarden
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: vaultwarden
@@ -29,5 +18,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
