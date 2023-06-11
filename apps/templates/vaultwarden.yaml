@@ -1,47 +1,47 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: vaultwarden
-  namespace: argocd
-spec:
-  project: default
-  sources:
-    - repoURL: {{ .Values.spec.source.repoURL }}
-      targetRevision: {{ .Values.spec.source.targetRevision }}
-      path: vaultwarden
-    - repoURL: 'https://github.com/guerzon/vaultwarden'
-      targetRevision: v0.13.0
-      path: charts/vaultwarden
-      helm:
-        values: |-
-          domain: "https://vaultwarden.sergi.cool"
-          signupsAllowed: false
-          ingress:
-            enabled: true
-            additionalAnnotations:
-              cert-manager.io/cluster-issuer: lets-encrypt
-            hostname: vaultwarden.sergi.cool
-            tls: true
-            tlsSecret: vaultwarden-ingress-tls
-          adminToken:
-            existingSecret: "vaultwarden"
-            existingSecretKey: "password"
-          smtp:
-            existingSecret: "vaultwarden"
-            host: "smtp-relay.sendinblue.com"
-            security: "starttls"
-            port: "587"
-            username:
-              existingSecretKey: "username"
-            password:
-              existingSecretKey: "password"
-          database:
-            connectionRetries: "15"
-              maxConnections: "10"
-  destination:
-    server: {{ .Values.spec.destination.server }}
-    namespace: vaultwarden
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+{{/*apiVersion: argoproj.io/v1alpha1*/}}
+{{/*kind: Application*/}}
+{{/*metadata:*/}}
+{{/*  name: vaultwarden*/}}
+{{/*  namespace: argocd*/}}
+{{/*spec:*/}}
+{{/*  project: default*/}}
+{{/*  sources:*/}}
+{{/*    - repoURL: {{ .Values.spec.source.repoURL }}*/}}
+{{/*      targetRevision: {{ .Values.spec.source.targetRevision }}*/}}
+{{/*      path: vaultwarden*/}}
+{{/*    - repoURL: 'https://github.com/guerzon/vaultwarden'*/}}
+{{/*      targetRevision: v0.13.0*/}}
+{{/*      path: charts/vaultwarden*/}}
+{{/*      helm:*/}}
+{{/*        values: |-*/}}
+{{/*          domain: "https://vaultwarden.sergi.cool"*/}}
+{{/*          signupsAllowed: false*/}}
+{{/*          ingress:*/}}
+{{/*            enabled: true*/}}
+{{/*            additionalAnnotations:*/}}
+{{/*              cert-manager.io/cluster-issuer: lets-encrypt*/}}
+{{/*            hostname: vaultwarden.sergi.cool*/}}
+{{/*            tls: true*/}}
+{{/*            tlsSecret: vaultwarden-ingress-tls*/}}
+{{/*          adminToken:*/}}
+{{/*            existingSecret: "vaultwarden"*/}}
+{{/*            existingSecretKey: "password"*/}}
+{{/*          smtp:*/}}
+{{/*            existingSecret: "vaultwarden"*/}}
+{{/*            host: "smtp-relay.sendinblue.com"*/}}
+{{/*            security: "starttls"*/}}
+{{/*            port: "587"*/}}
+{{/*            username:*/}}
+{{/*              existingSecretKey: "username"*/}}
+{{/*            password:*/}}
+{{/*              existingSecretKey: "password"*/}}
+{{/*          database:*/}}
+{{/*            connectionRetries: "15"*/}}
+{{/*              maxConnections: "10"*/}}
+{{/*  destination:*/}}
+{{/*    server: {{ .Values.spec.destination.server }}*/}}
+{{/*    namespace: vaultwarden*/}}
+{{/*  syncPolicy:*/}}
+{{/*    automated:*/}}
+{{/*      prune: true*/}}
+{{/*      selfHeal: true*/}}
