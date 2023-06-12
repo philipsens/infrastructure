@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: qbittorrent
-  namespace: qbittorrent
   annotations:
     cert-manager.io/cluster-issuer: lets-encrypt
 spec:
@@ -21,4 +20,4 @@ spec:
               service:
                 name: qbittorrent
                 port:
-                  number: 80
+                  name: web

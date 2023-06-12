@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr
+spec:
+  template:
+    spec:
+      containers:
+        - name: prowlarr
+          image: cr.hotio.dev/hotio/prowlarr:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: prowlarr-config
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /config
+              name: prowlarr-config
+            - mountPath: /downloads
+              name: prowlarr-downloads
+      volumes:
+        - name: prowlarr-config
+          hostPath:
+            path: /opt/prowlarr/config
+            type: Directory
+        - name: prowlarr-downloads
+          hostPath:
+            path: /opt/media/downloads
+            type: Directory
