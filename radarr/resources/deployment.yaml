@@ -12,8 +12,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: radarr-config
-          ports:
-            - containerPort: 8080
           volumeMounts:
             - mountPath: /config
               name: config

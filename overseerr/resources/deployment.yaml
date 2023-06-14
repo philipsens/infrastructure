@@ -1,28 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prowlarr
+  name: overseerr
 spec:
   template:
     spec:
       containers:
-        - name: prowlarr
-          image: cr.hotio.dev/hotio/prowlarr:latest
+        - name: overseerr
+          image: cr.hotio.dev/hotio/overseerr:latest
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
-                name: prowlarr-config
+                name: overseerr-config
           volumeMounts:
             - mountPath: /config
               name: config
-            - mountPath: /downloads
-              name: downloads
       volumes:
         - name: config
           hostPath:
-            path: /opt/prowlarr/config
-            type: Directory
-        - name: downloads
-          hostPath:
-            path: /opt/media/downloads
+            path: /opt/overseerr/config
             type: Directory
