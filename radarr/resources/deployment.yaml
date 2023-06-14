@@ -16,17 +16,17 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - mountPath: /config
-              name: radarr-config
+              name: config
             - mountPath: /downloads
-              name: radarr-downloads
+              name: downloads
             - mountPath: /movies
-              name: radarr-movies
+              name: movies
       volumes:
-        - name: radarr-config
+        - name: config
           hostPath:
             path: /opt/radarr/config
             type: Directory
-        - name: radarr-downloads
+        - name: downloads
           hostPath:
             path: /opt/media/downloads
             type: Directory

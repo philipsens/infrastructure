@@ -16,15 +16,15 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - mountPath: /config
-              name: qbittorrent-config
+              name: config
             - mountPath: /downloads
-              name: qbittorrent-downloads
+              name: downloads
       volumes:
-        - name: qbittorrent-config
+        - name: config
           hostPath:
             path: /opt/qbittorrent/config
             type: Directory
-        - name: qbittorrent-downloads
+        - name: downloads
           hostPath:
             path: /opt/media/downloads
             type: Directory

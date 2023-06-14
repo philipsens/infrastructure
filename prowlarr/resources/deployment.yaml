@@ -16,15 +16,15 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - mountPath: /config
-              name: prowlarr-config
+              name: config
             - mountPath: /downloads
-              name: prowlarr-downloads
+              name: downloads
       volumes:
-        - name: prowlarr-config
+        - name: config
           hostPath:
             path: /opt/prowlarr/config
             type: Directory
-        - name: prowlarr-downloads
+        - name: downloads
           hostPath:
             path: /opt/media/downloads
             type: Directory

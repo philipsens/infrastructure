@@ -33,9 +33,9 @@ spec:
             - containerPort: 32469
           volumeMounts:
             - mountPath: /config
-              name: plex-config
+              name: config
             - mountPath: /torrent
-              name: plex-transcode
+              name: transcode
             - mountPath: /movies
               name: movies
             - mountPath: /series
@@ -43,11 +43,11 @@ spec:
             - mountPath: /music
               name: music
       volumes:
-        - name: plex-config
+        - name: config
           hostPath:
             path: /opt/plex/config
             type: Directory
-        - name: plex-transcode
+        - name: transcode
           hostPath:
             path: /opt/plex/transcode
             type: Directory
