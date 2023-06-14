@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+spec:
+  template:
+    spec:
+      containers:
+        - name: sonarr
+          image: cr.hotio.dev/hotio/sonarr:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: sonarr-config
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /downloads
+              name: downloads
+            - mountPath: /series
+              name: series
+      volumes:
+        - name: config
+          hostPath:
+            path: /opt/sonarr/config
+            type: Directory
+        - name: downloads
+          hostPath:
+            path: /opt/media/downloads
+            type: Directory
+        - name: series
+          hostPath:
+            path: /opt/media/series
+            type: Directory
