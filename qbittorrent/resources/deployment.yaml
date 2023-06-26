@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: qbittorrent
-          image: cr.hotio.dev/hotio/qbittorrent:latest
+          image: hotio/qbittorrent:latest
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:

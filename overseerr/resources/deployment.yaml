@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: overseerr
-          image: cr.hotio.dev/hotio/overseerr:latest
+          image: hotio/overseerr:latest
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:

@@ -9,10 +9,6 @@ resources:
   - resources/secret.yaml
   - resources/service.yaml
 
-images:
-  - name: plexinc/pms-docker
-    newTag: 1.32.1.6999-91e1e2e2c
-
 labels:
   - includeSelectors: true
     pairs:

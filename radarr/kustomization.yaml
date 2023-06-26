@@ -9,10 +9,6 @@ resources:
   - resources/service.yaml
   - resources/secret.yaml
 
-images:
-  - name: cr.hotio.dev/hotio/radarr
-    newTag: release-4.5.2.7388
-
 labels:
   - includeSelectors: true
     pairs:

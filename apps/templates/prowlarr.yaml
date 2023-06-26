@@ -5,6 +5,10 @@ metadata:
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: prowlarr=hotio/prowlarr
+    argocd-image-updater.argoproj.io/prowlarr.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/prowlarr.allow-tags: regexp:^release-1.+$
 spec:
   project: default
   source:

@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: prowlarr
-          image: cr.hotio.dev/hotio/prowlarr:latest
+          image: hotio/prowlarr:latest
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:

@@ -5,6 +5,10 @@ metadata:
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: qbittorrent=hotio/qbittorrent
+    argocd-image-updater.argoproj.io/qbittorrent.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/qbittorrent.allow-tags: regexp:^release-4.+$
 spec:
   project: default
   source:

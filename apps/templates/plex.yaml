@@ -5,6 +5,10 @@ metadata:
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: plex=plexinc/pms-docker
+    argocd-image-updater.argoproj.io/plex.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/plex.allow-tags: regexp:^1.+$
 spec:
   project: default
   source:

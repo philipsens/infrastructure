@@ -9,10 +9,6 @@ resources:
   - resources/service.yaml
   - resources/secret.yaml
 
-images:
-  - name: cr.hotio.dev/hotio/sonarr
-    newTag: release-3.0.10.1567
-
 labels:
   - includeSelectors: true
     pairs:

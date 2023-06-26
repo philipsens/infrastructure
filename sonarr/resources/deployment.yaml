@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: sonarr
-          image: cr.hotio.dev/hotio/sonarr:latest
+          image: hotio/sonarr:latest
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:

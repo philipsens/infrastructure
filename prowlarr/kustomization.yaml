@@ -8,10 +8,6 @@ resources:
   - resources/namespace.yaml
   - resources/service.yaml
 
-images:
-  - name: cr.hotio.dev/hotio/prowlarr
-    newTag: release-1.5.2.3484
-
 labels:
   - includeSelectors: true
     pairs:
