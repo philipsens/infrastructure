@@ -26,9 +26,9 @@ spec:
             type: Directory
         - name: downloads
           hostPath:
-            path: /opt/media/downloads
+            path: /tank/media/downloads
             type: Directory
         - name: movies
           hostPath:
-            path: /opt/media/movies
+            path: /tank/media/movies
             type: Directory

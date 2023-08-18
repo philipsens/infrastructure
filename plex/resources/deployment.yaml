@@ -53,13 +53,13 @@ spec:
             type: Directory
         - name: movies
           hostPath:
-            path: /opt/media/movies
+            path: /tank/media/movies
             type: Directory
         - name: series
           hostPath:
-            path: /opt/media/series
+            path: /tank/media/series
             type: Directory
         - name: music
           hostPath:
-            path: /opt/media/music
+            path: /tank/media/music
             type: Directory
