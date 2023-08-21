@@ -6,6 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
+    argocd.argoproj.io/sync-wave: "1"
     argocd-image-updater.argoproj.io/image-list: plex=plexinc/pms-docker
     argocd-image-updater.argoproj.io/plex.update-strategy: newest-build
     argocd-image-updater.argoproj.io/plex.allow-tags: regexp:^1.+$
