@@ -6,9 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd-image-updater.argoproj.io/image-list: overseerr=hotio/overseerr
-    argocd-image-updater.argoproj.io/overseerr.update-strategy: newest-build
-    argocd-image-updater.argoproj.io/overseerr.allow-tags: regexp:^release-1.+$
+    argocd-image-updater.argoproj.io/image-list: hotio/overseerr:release-1.x
 spec:
   project: default
   source:

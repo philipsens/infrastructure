@@ -6,9 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd-image-updater.argoproj.io/image-list: qbittorrent=hotio/qbittorrent
-    argocd-image-updater.argoproj.io/qbittorrent.update-strategy: newest-build
-    argocd-image-updater.argoproj.io/qbittorrent.allow-tags: regexp:^release-4.+$
+    argocd-image-updater.argoproj.io/image-list: hotio/qbittorrent:release-4.x
 spec:
   project: default
   source:

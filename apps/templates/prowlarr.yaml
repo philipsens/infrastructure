@@ -6,9 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd-image-updater.argoproj.io/image-list: prowlarr=hotio/prowlarr
-    argocd-image-updater.argoproj.io/prowlarr.update-strategy: newest-build
-    argocd-image-updater.argoproj.io/prowlarr.allow-tags: regexp:^release-1.+$
+    argocd-image-updater.argoproj.io/image-list: hotio/prowlarr:release-1.x
 spec:
   project: default
   source:
