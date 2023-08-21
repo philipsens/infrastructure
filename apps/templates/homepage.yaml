@@ -32,9 +32,17 @@ spec:
               - secretName: homepage-ingress-tls
                 hosts:
                   - home.sergi.cool
+        envFrom:
+          - secretRef:
+              name: api-keys
         config:
           bookmarks: {}
-          services: {}
+          services:
+            - Overseerr:
+                widget:
+                  type: overseerr
+                  url: https://overseerr.sergi.cool/
+                  key: {{HOMEPAGE_VAR_OVERSEERR_API_KEY}}
           widgets:
             - resources:
                 backend: kubernetes
