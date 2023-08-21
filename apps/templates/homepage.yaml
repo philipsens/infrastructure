@@ -3,22 +3,56 @@ kind: Application
 metadata:
   name: homepage
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: ghcr.io/benphelps/homepage:v0.6.x
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: homepage=ghcr.io/benphelps/homepage
-    argocd-image-updater.argoproj.io/homepage.update-strategy: newest-build
-    argocd-image-updater.argoproj.io/homepage.allow-tags: regexp:^v0.6.+$
 spec:
   project: default
   source:
-    path: homepage
-    repoURL: {{ .Values.spec.source.repoURL }}
-    targetRevision: {{ .Values.spec.source.targetRevision }}
+    repoURL: 'https://jameswynn.github.io/helm-charts'
+    targetRevision: 1.2.0
+    chart: homepage
+    helm:
+      values: |-
+        enableRbac: true
+        serviceAccount:
+          create: true
+        ingress:
+          main:
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: lets-encrypt
+            hosts:
+              - host: home.sergi.cool
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls:
+              - secretName: homepage-ingress-tls
+                hosts:
+                  - home.sergi.cool
+        config:
+          bookmarks: {}
+          services: {}
+          widgets:
+            - resources:
+                backend: kubernetes
+                expanded: true
+                cpu: true
+                memory: true
+                disk: /app/config
+            - search:
+                provider: duckduckgo
+                target: _blank
+          kubernetes:
+            mode: cluster
   destination:
-    namespace: homepage
     server: {{ .Values.spec.destination.server }}
+    namespace: homepage
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
