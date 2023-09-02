@@ -9,6 +9,9 @@ spec:
         - name: sonarr
           image: hotio/sonarr:latest
           imagePullPolicy: IfNotPresent
+          env:
+            - name: HOMEPAGE_VAR_SONARR_API_KEY
+              value: "test"
           envFrom:
             - configMapRef:
                 name: sonarr-config
