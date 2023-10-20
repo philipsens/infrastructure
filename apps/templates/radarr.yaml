@@ -6,7 +6,8 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd-image-updater.argoproj.io/image-list: hotio/radarr:release-4.x
+    argocd-image-updater.argoproj.io/image-list: radarr=hotio/radarr:latest
+    argocd-image-updater.argoproj.io/radarr.update-strategy: digest
 spec:
   project: default
   source:

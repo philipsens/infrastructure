@@ -6,7 +6,8 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd-image-updater.argoproj.io/image-list: hotio/sonarr:release-3.x
+    argocd-image-updater.argoproj.io/image-list: sonarr=hotio/sonarr:release-3.x
+    argocd-image-updater.argoproj.io/sonarr.update-strategy: digest
 spec:
   project: default
   source:

@@ -7,7 +7,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-    argocd-image-updater.argoproj.io/image-list: plexinc/pms-docker:1.x
+    argocd-image-updater.argoproj.io/image-list: plex=plexinc/pms-docker:latest
+    argocd-image-updater.argoproj.io/plex.update-strategy: digest
     argocd-image-updater.argoproj.io/plex.pull-secret: pullsecret:argocd/dockerhub-secret
 spec:
   project: default
