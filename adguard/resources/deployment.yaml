@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard
+spec:
+  template:
+    spec:
+      containers:
+        - name: adguard
+          image: adguard/adguardhome:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: adguard-config
+          volumeMounts:
+            - mountPath: /opt/adguardhome/conf
+              name: config
+            - mountPath: /opt/adguardhome/work
+              name: workdir
+      volumes:
+        - name: config
+          hostPath:
+            path: /opt/adguard/config
+            type: Directory
+        - name: workdir
+          hostPath:
+            path: /opt/adguard/workdir
+            type: Directory
