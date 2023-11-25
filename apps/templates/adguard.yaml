@@ -7,6 +7,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd-image-updater.argoproj.io/image-list: adguard/adguardhome:v0.107.x
+    argocd-image-updater.argoproj.io/plex.pull-secret: pullsecret:argocd/dockerhub-secret
 spec:
   project: default
   source:
