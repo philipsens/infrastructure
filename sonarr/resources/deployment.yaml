@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: sonarr
-          image: hotio/sonarr:latest
+          image: ghcr.io/hotio/sonarr:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: HOMEPAGE_VAR_SONARR_API_KEY

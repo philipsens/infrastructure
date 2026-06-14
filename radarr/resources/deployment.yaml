@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: radarr
-          image: hotio/radarr:latest
+          image: ghcr.io/hotio/radarr:latest
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:

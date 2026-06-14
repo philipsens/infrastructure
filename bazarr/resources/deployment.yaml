@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: bazarr
-          image: hotio/bazarr:latest
+          image: ghcr.io/hotio/bazarr:latest
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:

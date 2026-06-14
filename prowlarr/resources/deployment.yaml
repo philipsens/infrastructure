@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: prowlarr
-          image: hotio/prowlarr:latest
+          image: ghcr.io/hotio/prowlarr:latest
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
