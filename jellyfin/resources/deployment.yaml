@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - name: jellyfin
+          image: ghcr.io/hotio/jellyfin:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: jellyfin-config
+          ports:
+            - containerPort: 8096
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /movies
+              name: movies
+            - mountPath: /series
+              name: series
+            - mountPath: /music
+              name: music
+      volumes:
+        - name: config
+          hostPath:
+            path: /opt/jellyfin/config
+            type: Directory
+        - name: movies
+          hostPath:
+            path: /tank/media/movies
+            type: Directory
+        - name: series
+          hostPath:
+            path: /tank/media/series
+            type: Directory
+        - name: music
+          hostPath:
+            path: /tank/media/music
+            type: Directory
+
